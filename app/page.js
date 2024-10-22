@@ -26,7 +26,7 @@ export default function Home() {
 
         <section className="w-full flex-1 flex flex-col overflow-y-scroll">
           {noMessages ? (
-            <p className="text-center text-xl">Ask me Anything</p>
+            <p className="text-center text-xl text-white">Ask me Anything</p>
           ) : (
             <>
               {messages.map((message, index) => {
