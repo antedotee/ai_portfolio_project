@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "info": "Kartik Yadav",
+    "description": "Currently a second year undergrad in CS at Newton School of Technology, Aspiring Indie Hacker. Born and raised in Jhansi, Uttar Pradesh."
+  },
+  {
+    "id": 2,
+    "info": "Education",
+    "description": "B.Tech from Newton School of Technology"
+  },
+
+  {
+    "id": 3,
+    "info": "Twitter",
+    "description": "@antedotee"
+  },
+  {
+    "id": 3,
+    "info": "Github",
+    "description": "@antedotee"
+  },
+  {
+    "id": 4,
+    "info": "Personal Project",
+    "description": "Made a dynamic whiteboard using react and rough.js, Code for that project - https://github.com/antedotee/whiteboard"
+  }
+]
