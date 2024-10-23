@@ -9,49 +9,59 @@ export default function Home() {
 
   const noMessages = !messages || messages.length === 0;
 
-  console.log(messages);
-
   return (
-    <main>
-      <Image
-        layout="fill"
-        src="/background_image.jpg"
-        alt="Portfolio Banner"
-        objectFit="cover"
-      />
-      <div className="absolute px-4 w-full h-screen flex flex-col gap-5 items-center bottom-5">
-        <h1 className="text-4xl font-Kanit md:text-5xl font-bold text-white mt-10">
+    <main className="relative h-screen w-full">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          layout="fill"
+          src="/background_image.jpg"
+          alt="Portfolio Banner"
+          objectFit="cover"
+          className="opacity-80"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/50"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center justify-between h-full px-4 py-10">
+        {/* Header */}
+        <h1 className="text-4xl font-Kanit md:text-5xl font-bold text-white drop-shadow-lg mt-10">
           Kartik Yadav&rsquo;s AI Portfolio
         </h1>
 
-        <section className="w-full flex-1 flex flex-col overflow-y-scroll">
+        {/* Chat Section */}
+        <section className="w-full flex-1 flex flex-col gap-4 overflow-y-auto bg-black/30 backdrop-blur-lg p-6 rounded-lg shadow-lg">
           {noMessages ? (
-            <p className="text-center text-xl text-white">Ask me Anything</p>
+            <p className="text-center text-xl text-gray-200">Ask me Anything</p>
           ) : (
             <>
-              {messages.map((message, index) => {
-                return (
-                  <div
-                    className={`rounded-3xl ${
-                      message.role === "user"
-                        ? "rounded-br-none bg-blue-500 ml-auto"
-                        : "rounded-bl-none bg-orange-700"
-                    } m-2 p-2 px-4 w-[70%] md:w-[80%] mt-4 text-gray-200`}
-                    key={`message-${index}`}
-                  >
-                    <b>{message.role === "user" ? "User:" : "Kartik:"}</b>{" "}
-                    {message.content}
-                  </div>
-                );
-              })}
+              {messages.map((message, index) => (
+                <div
+                  className={`rounded-3xl p-4 px-6 w-[70%] md:w-[80%] mt-4 text-gray-100 shadow-lg transition-all duration-300 ${
+                    message.role === "user"
+                      ? "bg-blue-600 self-end text-right"
+                      : "bg-orange-600 self-start text-left"
+                  }`}
+                  key={`message-${index}`}
+                >
+                  <b>{message.role === "user" ? "User:" : "Kartik:"}</b>{" "}
+                  {message.content}
+                </div>
+              ))}
 
-              {isLoading && <span className="ml-auto">Thinking... 🤔</span>}
+              {isLoading && (
+                <span className="ml-auto text-gray-200 animate-pulse">
+                  Thinking... 🤔
+                </span>
+              )}
             </>
           )}
         </section>
 
+        {/* Input Section */}
         <form
-          className="w-full flex gap-2"
+          className="w-full flex gap-3"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(e);
@@ -62,11 +72,11 @@ export default function Home() {
             value={input}
             type="text"
             placeholder="Who are you?"
-            className="py-3 px-5 flex-1 rounded text-black text-2xl border-2 border-gray-50 focus:outline-none focus:border-blue-500"
+            className="flex-1 py-3 px-5 rounded-full text-black text-xl border-2 border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
           />
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white rounded text-xl  px-5 cursor-pointer focus:outline-none disabled:bg-blue-400"
+            className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-full text-xl px-6 py-3 shadow-lg cursor-pointer transition-all duration-200 disabled:bg-blue-400 disabled:cursor-not-allowed"
           >
             Submit
           </button>
