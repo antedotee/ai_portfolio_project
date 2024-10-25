@@ -116,10 +116,10 @@ export default function Home() {
             sequence={[
               "Kartik Yadav's AI Portfolio",
               1000,
-              "Innovative. Creative. Intelligent.",
+              "Ask any question about me",
               1000,
-              "Welcome to the Future of AI",
-              1000,
+              // "Welcome to the Future of AI",
+              // 1000,
             ]}
             wrapper="span"
             speed={50}
